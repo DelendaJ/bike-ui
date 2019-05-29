@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {Observable} from 'rxjs-observable';
+
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application / json'})
@@ -19,11 +20,12 @@ export class BikeService {
   }
 
   getBike(id: number) {
-    return this.http.get('/server/api/v1/bikes' + id);
+    return this.http.get('/server/api/v1/bikes/' + id);
 
   }
+
   createBikeRegistration(bike) {
-    let body = JSON.stringify(bike);
+    const body = JSON.stringify(bike);
     return this.http.post('/server/api/v1/bikes', body, httpOptions);
 
   }
